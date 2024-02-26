@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useContext, useEffect, useMemo, useState } from "react"
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react"
 import { InputSelect } from "./components/InputSelect"
 import { Instructions } from "./components/Instructions"
 import { Transactions } from "./components/Transactions"
@@ -7,7 +7,6 @@ import { usePaginatedTransactions } from "./hooks/usePaginatedTransactions"
 import { useTransactionsByEmployee } from "./hooks/useTransactionsByEmployee"
 import { EMPTY_EMPLOYEE } from "./utils/constants"
 import { Employee } from "./utils/types"
-import { AppContext } from "./utils/context"
 
 export function App() {
   const { data: employees, ...employeeUtils } = useEmployees()
