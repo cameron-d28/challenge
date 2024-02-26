@@ -63,6 +63,7 @@ export function InputSelect<TItem>({
                 toggleProps.onClick(event)
               }}
             >
+              {/* added arrow toggle */}
               {inputValue} {isOpen ? "▲" : "▼"}
             </div>
 
@@ -75,7 +76,6 @@ export function InputSelect<TItem>({
             >
               {renderItems()}
             </div>
-
           </div>
         )
 

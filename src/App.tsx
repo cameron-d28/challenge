@@ -10,7 +10,6 @@ import { Employee } from "./utils/types"
 import { AppContext } from "./utils/context"
 
 export function App() {
-  const { cache } = useContext(AppContext)
   const { data: employees, ...employeeUtils } = useEmployees()
   const { data: paginatedTransactions, ...paginatedTransactionsUtils } = usePaginatedTransactions()
   const { data: transactionsByEmployee, ...transactionsByEmployeeUtils } = useTransactionsByEmployee()
@@ -31,7 +30,6 @@ export function App() {
     setIsLoading(false)
 
     await paginatedTransactionsUtils.fetchAll()
-
   }, [employeeUtils, paginatedTransactionsUtils, transactionsByEmployeeUtils])
 
   const loadTransactionsByEmployee = useCallback(
@@ -52,7 +50,8 @@ export function App() {
     <Fragment>
       <main className="MainContainer">
         <Instructions />
-        <button onClick={() => console.log(cache)}>Log Cache</button>
+        {/* added this for debugging */}
+        {/* <button onClick={() => console.log(cache)}>Log Cache</button> */}
 
         <hr className="RampBreak--l" />
 
@@ -87,8 +86,7 @@ export function App() {
           this automatically doesn't display when viewing by employee since 
           on line 39 invalidateData is called clearing paginatedTransactions
           */}
-          {(transactions !== null && paginatedTransactions?.nextPage
-          ) && (
+          {transactions !== null && paginatedTransactions?.nextPage && (
             <button
               className="RampButton"
               disabled={paginatedTransactionsUtils.loading}
